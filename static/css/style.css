@@ -57,15 +57,18 @@ body{
     width: 100%;
     display: flex;
     flex-direction: row;
-    margin-top: 3vw;
+    margin-top: 2vw;
 }
 .first{
     width: 30%;
 }
 .cont{
     width: 35%;  
+  
 }
 .cont .card{
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin-top: 1vw;
     height: auto;
