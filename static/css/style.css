@@ -9,7 +9,7 @@ body{
 }
  header{
     background-color:#ffff;
-    border-bottom: 0.1vw solid grey; 
+    border-bottom: 0.08vw solid grey; 
 
  }
  .navigation{
@@ -40,6 +40,8 @@ body{
  .search i{
     color: black;
     position: relative;
+
+
  }
  .search_bar{
     width: 30%;
@@ -50,4 +52,10 @@ body{
     justify-content: center;
     
  }
-
+/* .content-container{
+    background-color: #ffff;
+    padding-top: 5vw;
+    position: absolute;
+    width: 8vw;
+    left: 0;
+} */
