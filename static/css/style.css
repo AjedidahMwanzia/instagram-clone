@@ -128,13 +128,13 @@ body{
 }
 .comment{
     margin-left: 1vw;
-    margin-right: 9vw;
+    margin-right: 12vw;
 }
 .comment i{
     padding-right: 1vw;
 }
 .dot{
-    margin-right: 12vw;
+    margin-right: 14vw;
     padding-top: 0.5vw;
 }
 .save{
@@ -169,5 +169,19 @@ body{
 .date{
     margin-left: 1vw;
 }
-
+/* ..........................form .......... */
+.panel{
+    background-color: white;
+    margin-top: 4vw;
+    border-radius: 1vw;
+    box-shadow: 1.5v 1.2vw white;
+    margin-left: 13vw;
+    
+}
+.panel body{
+    padding-top: 2vw;
+}
+.panel label{
+    padding: 1vw;
+}
     

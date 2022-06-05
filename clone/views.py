@@ -13,9 +13,10 @@ class PostListView(ListView):
     context_object_name = "posts"
     
 class PostCreateView(CreateView):
-    template='clone/post_create.html'
+    template_name='clone/post_create.html'
     form_class = PostForm
     queryset = Post.objects.all()
+    success_url = '/'
     
     def form_valid(self,form):
         print(form.cleaned_data)
