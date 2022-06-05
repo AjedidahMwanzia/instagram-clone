@@ -1,10 +1,10 @@
 from django import forms
 from .models import Post
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
+from crispy_forms.layout import Layout, Field, ButtonHolder, Submit
 
 class PostForm(forms.ModelForm):
-    helper = Formhelper()
+    helper = FormHelper()
     helper.form_method= 'POST'
     helper.add_input(Submit('post','post',css_class='btn-primary'
     ))
@@ -12,8 +12,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model=Post
         fields = [
-            'image'
-            'caption'
+            'image',
+            'caption',
         ]
 
 
