@@ -52,10 +52,30 @@ body{
     justify-content: center;
     
  }
-/* .content-container{
-    background-color: #ffff;
-    padding-top: 5vw;
-    position: absolute;
-    width: 8vw;
-    left: 0;
-} */
+.main{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3vw;
+}
+.first{
+    width: 30%;
+}
+.cont{
+    width: 35%;
+    border: 0.08vw solid grey;
+    background-color: white;
+    border-radius: 1vw;
+}
+.cont .card{
+    width: 100%;
+    margin-top: 1vw;
+    width: auto;
+}
+.post_image img{
+    width: 100%;
+    height:30vw;
+}
+.last{
+    width: 30%;
+}
