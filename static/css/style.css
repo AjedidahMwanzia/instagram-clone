@@ -16,10 +16,38 @@ body{
     display:flex ;
     flex-direction: row;
     text-align: center;
-    padding-top: 1vw;
-    padding-bottom: 1vw;
+    padding-top: 1.2vw;
+    padding-bottom: 0.8vw;
     flex-wrap: wrap;
     justify-content: center;
     box-shadow:0.1vw 0.5v white;
     justify-content: space-around;
+   
  }
+ .instalogo a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Lobster', cursive;
+    font-size: 1.5vw;
+ }
+ .contacts_icons i{
+    color: black;
+    padding: 0.6vw;
+ }
+ input{
+    padding: 0.2vw;
+ }
+ .search i{
+    color: black;
+    position: relative;
+ }
+ .search_bar{
+    width: 30%;
+    border-radius: 1vw;
+    cursor: text;
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    
+ }
+
