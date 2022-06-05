@@ -10,9 +10,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@500&family=Lobster&family=Mrs+Saint+Delafield&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,900;1,300&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7740ca802f.js" crossorigin="anonymous"></script>
     <title>Instagram</title>
 </head>
 <body>
-    
+    <header>
+        <div class="navigation">
+            <div class="instalogo">
+                <a href="/">Instagram</a>
+            </div>
+            <div class="search_bar">
+                <input type="text" placeholder="search">
+                <a class="search" href=""><i class="fas fa-search"></i></a>
+            </div>
+            <div class="contacts_icons">
+                <a class="explore" href="/"> <i class="far fa-compass"></i></a>
+                <a class="likes" href="/"> <i class="far fa-heart"></i></a>
+                <a class="profile" href="/"> <i class="far fa-user"></i></a>
+            </div>
+
+        </div>
+    </header>
+    <div class='content_container'>
+        {%  block content %}
+        {% endblock %}
+    </div>
 </body>
 </html>

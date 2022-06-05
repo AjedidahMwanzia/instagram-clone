@@ -1,6 +1,15 @@
 body{
     background-color: #ffff;
 }
- /* header{
-    border-bottom: ; 
- } */
+ header{
+    background-color:#FAFAFA ;
+    border-bottom: 0.1vw solid black; 
+
+ }
+ .navigation{
+    display:flex ;
+    flex-direction: row;
+    text-align: center;
+    padding: 2.6vw 2vw;
+    flex-wrap: wrap;
+ }
