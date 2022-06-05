@@ -1,5 +1,5 @@
 body{
-    background-color:  #FAFAFA;
+    background-color:  #fafafa ;
     
 }
 *{
@@ -52,6 +52,7 @@ body{
     justify-content: center;
     
  }
+ /* ...................................................... */
 .main{
     width: 100%;
     display: flex;
@@ -62,16 +63,18 @@ body{
     width: 30%;
 }
 .cont{
-    width: 35%;
-    border: 0.08vw solid grey;
-    background-color: white;
-    border-radius: 1vw;
-    font-family: 'Poppins', sans-serif;
+    width: 35%;  
 }
 .cont .card{
     width: 100%;
     margin-top: 1vw;
-    width: auto;
+    height: auto;
+    background-color: white;
+    border-radius: 1vw;
+    border: 0.08vw solid #dbdbdb;
+    padding-top: 1vw;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 1vw;
 }
 .card
 .post_image img{
@@ -114,4 +117,58 @@ body{
     margin-left: 20vw;
     padding-top: 1vw;
 }
+/* ................................................... */
+.engagement{
+    display: flex;
+}
+.engagement i{
+    color: black;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+   
+}
+.comment{
+    margin-left: 1vw;
+    margin-right: 9vw;
+}
+.comment i{
+    padding-right: 1vw;
+}
+.dot{
+    margin-right: 12vw;
+    padding-top: 0.5vw;
+}
+.save{
+    padding-top: 0.5vw;  
+}
+/* ............................clicks.............. */
+.clicks{
+    margin-left: 1vw;
+    margin-bottom: 1vw;
+}
+.clicks a{
+    text-decoration: none;
+    color: black;
+}
+/* ................................................ */
+.caption{
+    margin-left: 1vw;
+    display: flex;
+    margin-bottom: 1vw;
+}
+.caption a{
+    text-decoration: none;
+    color: black;
+    text-transform: capitalize;
+    font-weight: bold;
+    display: inline-block;
+    padding-right: 0.5vw;
+}
+.caption span{
+    margin-right: 2vw;
+}
+.date{
+    margin-left: 1vw;
+}
+
     
