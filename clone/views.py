@@ -6,6 +6,7 @@ from django.views.generic import (
 # Create your views here.
 
 class PostListView(ListView):
+    template_name='clone/post_list'
     queryset = Post.objects.all()
     context_object_name = "posts"
-    template_name='clone/post_list'
+    
