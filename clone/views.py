@@ -30,5 +30,5 @@ class PostDetailView(DetailView):
     queryset = Post.objects.all().filter(created_on__lte=timezone.now())
     def get_object(self):
         id_=self.kwargs.get('id')
-        return get_object_or_404(Post, id=id)
+        return get_object_or_404(Post, id=post_id)
 
