@@ -6,7 +6,7 @@
     <div class="div">
         <div class="card1">
             <div class="card_header">
-                <div class="profile_image">
+                <div class="profile_image1">
                     <a href="/user/{{image.user.id}}">
                         {% if image.user.profile.profile_photo%}
     
@@ -32,7 +32,7 @@
                     <i class="fa-solid fa-ellipsis fa-lg"></i>
                 </div>
             </div>
-            <div class="post_image">
+            <div class="post_image1">
                 <img src="{{image.image.url}}" alt="">
             </div>
             <div class="engagement">
@@ -57,7 +57,8 @@
                 <a href="">{{image.author}}</h2></a>
                 <span><p>{{image.caption}}</p></span>
             </div>
-            {% if comments%}
+            <div id="comments">
+                {% if comments%}
                 {% for comment in comments %}
                 <h6> {%if image.user.profile.profile_pic %}
                     <img src="{{comment.user.profile.profile_photo.url}}" alt="" class="icon">{% endif %}
@@ -80,6 +81,8 @@
                 <button type="submit" class="btn btn-dark">Post</button>
 
    </form>
+            </div>
+            
 
             <div class="date">
                 {{image.created_on|timesince}} &ensp;  ago

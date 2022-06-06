@@ -54,7 +54,7 @@ def profile(request,user_id):
     profile = get_object_or_404(Profile,id = current_user.id)
     return render(request, 'profile/profile.html', {"images": images, "profile": profile})
 # @login_required(login_url='/accounts/login/')
-def add_image(request):
+def post_create(request):
     if request.method=='POST':
         current_user=request.user
         form=AddImageForm(request.POST,request.FILES)
@@ -66,7 +66,7 @@ def add_image(request):
             return redirect('home')
     else:
             form=AddImageForm()
-    return render(request,'clone/add_image.html',{'form':form})
+    return render(request,'clone/post_create.html',{'form':form})
 def update_profile(request):
   	#Get the profile
     current_user=request.user

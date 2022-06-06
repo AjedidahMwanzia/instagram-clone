@@ -1,18 +1,18 @@
-{%  extends 'clone/base.html'%}
+{%extends 'clone/base.html'%}
 {% load crispy_forms_tags %}
 {%load static%}
 
 {% block content %}
-<!-- CSS only -->
-{{block.super}}
-<!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+{{block.super}}
 <div class="panel panel-default" style="width: 50vw; margin:0 auto;">
-   <div class="panel body">
-       {% crispy form%}
-       {% csrf_token %}
-   </div>
+    <div class="panel body">
+        <form action="" method="POST" enctype="multipart/form-data" >
+            {% csrf_token %}
+        {{form|crispy}}
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 </div>
-
-
-{%endblock%}
+{% endblock %}
