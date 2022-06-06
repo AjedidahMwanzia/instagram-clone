@@ -41,8 +41,8 @@
                 </div>
                 <div class="engagement">
                     <div class="comment">
-                        <a href="/"> <i class="far fa-heart fa-lg"></i></a>
-                        <a href=""><i class="fa-solid fa-comment fa-lg" ></i></a>
+                        <a href="post/{{image.id}}/like"> <i class="far fa-heart fa-lg"></i></a>
+                        <a href="post/{{image.id}}"><i class="fa-solid fa-comment fa-lg" ></i></a>
                         <a href=""><i class="fa-solid fa-arrow-up-from-bracket"></i></a>
                        
                     </div>
@@ -55,11 +55,20 @@
                     
                 </div>
                 <div class="clicks">
-                    <a href="">143 likes</a>
+                     <p>{{image.like_count.count}} Likes</strong></p>
                 </div>
                 <div class="caption">
                     <a href="">{{image.author}}</h2></a>
                     <span><p>{{image.caption}}</p></span>
+                </div>
+                <div>
+                    <span class="text-muted"> <a style="color: black;margin-left:1vw;text-decoration:none;" href="/post/{{image.id}}">
+                        {%if image.comments.all|length > 0%}
+                        view all  {{image.comments.all|length}} comments
+                        {% else %}
+                        No comments yet click to add!
+                        {% endif %}
+                    </a></span>                 
                 </div>
                 <div class="date">
                     {{image.created_on|timesince}} &ensp;  ago

@@ -185,4 +185,24 @@ body{
 .panel label{
     padding: 1vw;
 }
-    
+/* ......................detail... */
+.section1{
+    width: 100%;
+    display: flex;
+}
+.div{
+    width:45% ;
+    margin-left: 3vw;
+    margin-top: 2vw;
+
+} 
+.div img{
+    width: 100%;
+}
+.card1{
+    border-radius: 1vw;
+    border: 0.08vw solid #dbdbdb;
+    padding-top: 1vw;
+    padding-bottom: 2vw;
+
+}

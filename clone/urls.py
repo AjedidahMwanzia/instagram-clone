@@ -10,7 +10,7 @@ urlpatterns=[
   path('user/<user_id>', views.profile, name='profile'),
   path('user/add/image', views.add_image, name='addimage'),
   path('user/update/profile', views.update_profile, name='updateprofile'),
-  path('post/<image_id>',views.single_image,name='singleimage'),
+  path('post/<image_id>',views.post_detail,name='post_detail'),
   path('post/<image_id>/like',views.like_image,name='likeimage')
   
 ]

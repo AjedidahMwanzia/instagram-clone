@@ -8,13 +8,13 @@ from django.contrib import messages
 
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def home(request):
     images=Image.objects.all()
     
    
     return render(request,'clone/index.html',{'images':images})
-def single_image(request,image_id):
+def post_detail(request,image_id):
     image=get_object_or_404(Image,id=image_id)
     comments=Comments.objects.filter(image=image).all()
     current_user=request.user
