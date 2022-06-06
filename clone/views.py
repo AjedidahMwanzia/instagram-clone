@@ -35,7 +35,7 @@ def post_detail(request,image_id):
     
 
 
-@login_required
+# @login_required
 def search_results(request):
   if 'author' in request.GET and request.GET["author"]:
     name = request.GET.get('author')
@@ -53,7 +53,7 @@ def profile(request,user_id):
     images = Image.objects.filter(user=current_user)
     profile = get_object_or_404(Profile,id = current_user.id)
     return render(request, 'profile/profile.html', {"images": images, "profile": profile})
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def add_image(request):
     if request.method=='POST':
         current_user=request.user
@@ -66,7 +66,7 @@ def add_image(request):
             return redirect('home')
     else:
             form=AddImageForm()
-    return render(request,'post_create.html',{'form':form})
+    return render(request,'clone/add_image.html',{'form':form})
 def update_profile(request):
   	#Get the profile
     current_user=request.user

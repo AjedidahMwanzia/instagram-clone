@@ -186,13 +186,10 @@ body{
     padding: 1vw;
 }
 /* ......................detail... */
-.section1{
-    width: 100%;
-    display: flex;
-}
+
 .div{
     width:45% ;
-    margin-left: 3vw;
+    margin-left: 25vw;
     margin-top: 2vw;
 
 } 

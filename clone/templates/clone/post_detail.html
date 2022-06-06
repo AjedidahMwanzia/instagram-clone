@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<div class="section1">
+
     <div class="div">
         <div class="card1">
             <div class="card_header">
@@ -57,25 +57,37 @@
                 <a href="">{{image.author}}</h2></a>
                 <span><p>{{image.caption}}</p></span>
             </div>
-            <div>
-                <span class="text-muted"> <a style="color: black;margin-left:1vw;text-decoration:none;" href="/post/{{image.id}}">
-                    {%if image.comments.all|length > 0%}
-                    view all  {{image.comments.all|length}} comments
-                    {% else %}
-                    No comments yet click to add!
-                    {% endif %}
-                </a></span>                 
-            </div>
+            {% if comments%}
+                {% for comment in comments %}
+                <h6> {%if image.user.profile.profile_pic %}
+                    <img src="{{comment.user.profile.profile_photo.url}}" alt="" class="icon">{% endif %}
+                    <b>{{comment.user}}</b> {{comment.content}}</h6>
+                {% endfor %}
+                {% else%}
+                <p>No comments yet</p>
+                {% endif %}
+
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                   
+                    <div class="form-group">
+                        {{form.content}}
+                    </div>
+             
+
+
+                <button type="submit" class="btn btn-dark">Post</button>
+
+   </form>
+
             <div class="date">
                 {{image.created_on|timesince}} &ensp;  ago
             </div>
         </div>
     
     </div>
-    <div class="div">
-    
-    </div>
-</div>
+
 
 
 
