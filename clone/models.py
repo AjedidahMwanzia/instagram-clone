@@ -3,6 +3,7 @@ from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.forms import ModelForm, widgets
+
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
@@ -100,10 +101,10 @@ class Likes(models.Model):
      # delete like from database
     def delete_likes(self):
         self.delete()
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'image'], name="unique_like"),
-        ]
+    # class Meta:
+    #     constraints = [
+    #         models.UniqueConstraint(fields=['user', 'image'], name="unique_like"),
+    #     ]
 class AddImageForm(ModelForm):
     class Meta:
         model = Image
@@ -119,6 +120,8 @@ class CommentForm(ModelForm):
         widgets= {
             'content':forms.Textarea(attrs={'rows':2,})
         }
+
+
 
 class Subscribers(models.Model):
     name = models.CharField(max_length = 30)

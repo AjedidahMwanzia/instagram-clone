@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 # Create your views here.
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def home(request):
     images=Image.objects.all()
     
@@ -35,7 +35,7 @@ def post_detail(request,image_id):
     
 
 
-# @login_required
+@login_required
 def search_results(request):
   if 'author' in request.GET and request.GET["author"]:
     name = request.GET.get('author')
@@ -68,7 +68,7 @@ def user_profile(request, username):
     print(followers)
     return render(request, 'users/user_profile.html', params)
 
-# @login_required(login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def post_create(request):
     if request.method=='POST':
         current_user=request.user
@@ -160,12 +160,12 @@ def follow(request, to_follow):
         user_profile3 = Profile.objects.get(pk=to_follow)
         follow_s = Follow(follower=request.user.profile, followed=user_profile3)
         follow_s.save()
-        return redirect('user_profile', user_profile3.user.username)
+        return redirect('users/user_profile', user_profile3.user.username)
 
 def unfollow(request, to_unfollow):
     if request.method == 'GET':
         user_profile2 = Profile.objects.get(pk=to_unfollow)
         unfollow_d = Follow.objects.filter(follower=request.user.profile, followed=user_profile2)
         unfollow_d.delete()
-        return redirect('user_profile', user_profile2.user.username)
+        return redirect('users/user_profile', user_profile2.user.username)
 

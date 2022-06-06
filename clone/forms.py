@@ -36,5 +36,11 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['profile_photo']
 
-
+class CommentForm(ModelForm):
+    class Meta:
+        model=Comments
+        fields=['content']
+        widgets= {
+            'content':forms.Textarea(attrs={'rows':2,})
+        }
 
