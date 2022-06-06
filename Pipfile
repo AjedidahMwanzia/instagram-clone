@@ -8,6 +8,9 @@ requests = "*"
 django = "*"
 pillow = "*"
 django-crispy-forms = "*"
+django-registration = "==2.4.1"
+django-bootstrap3 = "*"
+django-urls = "*"
 
 [dev-packages]
 

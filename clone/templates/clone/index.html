@@ -2,7 +2,7 @@
 
 {% block content %}
    
-    {% for post in posts %}
+    {% for image in images %}
     <div class="main">
         <div class="first">
 
@@ -11,11 +11,22 @@
             <div class="card">
                 <div class="card_header">
                     <div class="profile_image">
-                        <img src="" alt="">
+                        <a href="/user/{{image.user.id}}">
+                            {% if image.user.profile.profile_photo%}
+        
+        
+                            <img src="{{image.user.profile.profile_photo.url}}" class="rounded-circle border"
+                                alt="{{image.user.profile.profile_photo.url}}" width="80" height="80">
+                                {%else%}
+                                <img src="../../../static/image/empty.webp">
+                                  {%endif%}
+                                
+
+                            </a>
                     </div>
                     <div class="post_info">
                         <div class="post_name">
-                           <a href="">{{post.author}}</a> 
+                           <a href="">{{image.author}}</a> 
                         </div>
                         <div class="post_location">
                            <p><i class="fa-solid fa-location-dot"></i> &ensp;Newyork</p> 
@@ -26,7 +37,7 @@
                     </div>
                 </div>
                 <div class="post_image">
-                    <img src="{{post.image.url}}" alt="">
+                    <img src="{{image.image.url}}" alt="">
                 </div>
                 <div class="engagement">
                     <div class="comment">
@@ -47,11 +58,11 @@
                     <a href="">143 likes</a>
                 </div>
                 <div class="caption">
-                    <a href="">{{post.author}}</h2></a>
-                    <span><p>{{post.caption}}</p></span>
+                    <a href="">{{image.author}}</h2></a>
+                    <span><p>{{image.caption}}</p></span>
                 </div>
                 <div class="date">
-                    {{post.created_on|timesince}} &ensp;  ago
+                    {{image.created_on|timesince}} &ensp;  ago
                 </div>
             </div>
         
