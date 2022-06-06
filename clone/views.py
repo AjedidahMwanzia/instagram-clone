@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import Post
+from django.utils import timezone
 from .forms import PostForm
 from django.views.generic import (
     ListView,
     CreateView,
+    DetailView,
 )
 # Create your views here.
 
@@ -22,4 +24,11 @@ class PostCreateView(CreateView):
         print(form.cleaned_data)
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class PostDetailView(DetailView):
+    template_name='clone/post_detail.html'
+    queryset = Post.objects.all().filter(created_on__lte=timezone.now())
+    def get_object(self):
+        id_=self.kwargs.get('id')
+        return get_object_or_404(Post, id=id)
 

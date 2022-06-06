@@ -1,0 +1,9 @@
+{%  extends 'clone/base.html'%}
+
+
+{% block content %}
+<p>{{post.author}}</p>
+<img src="{{post.image.url}}" alt="">
+<p>{{post.caption}}</p>
+
+{%endblock%}
