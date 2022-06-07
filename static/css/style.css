@@ -50,6 +50,7 @@ body{
     position: absolute;
     text-align: center;
     justify-content: center;
+    margin-left: -12vw;
     
  }
  /* ...................................................... */
@@ -74,6 +75,13 @@ body{
     padding-top: 1vw;
     font-family: 'Poppins', sans-serif;
     padding-bottom: 1vw;
+}
+.contacts_icons{
+    margin-left: 20vw;
+    margin-top: 0.5vw;
+}
+.contacts_icons i{
+    padding: 0.5vw;
 }
 .card
 .post_image img{
@@ -119,6 +127,7 @@ body{
 /* ................................................... */
 .engagement{
     display: flex;
+   
 }
 .engagement i{
     color: black;
@@ -233,4 +242,31 @@ body{
 .post_image1 img{
     width: 100%;
     height:30vw;
+}
+/* ...............................log */
+.log{
+    display: flex;
+}
+.log a{
+    padding-left: 1vw;
+}
+/* ..................................container */
+
+.card-header img{
+    width: 5vw;
+}
+/* ..........................................profile */
+#profile{
+    width: 20vw;
+    margin-top: 2vw;
+}
+.followers{
+    display: flex;
+    justify-content: space-around;
+}
+.followers p{
+    padding-left: 1vw;
+}
+.column{
+    display: flex;
 }

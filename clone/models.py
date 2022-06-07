@@ -3,17 +3,18 @@ from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.forms import ModelForm, widgets
-
+from django.core.exceptions import ObjectDoesNotExist
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
 # Create your models here.
 class Image(models.Model):
-    author=models.ForeignKey('auth.User',on_delete = models.CASCADE)
+    name=models.ForeignKey('auth.User',on_delete = models.CASCADE)
     image=models.ImageField(default='DEFAULT VALUE',blank=True,null=True)
     caption = models.TextField()
     created_on=models.DateTimeField(default=timezone.now)
-
+    
+    
     def __str__(self):
         return self.caption
 
@@ -35,7 +36,7 @@ class Image(models.Model):
     class Meta:
         ordering = ['-created_on',]
 class Profile(models.Model):
-    profile_photo=models.ImageField(upload_to = 'pictures/')
+    profile_photo=models.ImageField(upload_to = 'image/')
     bio=models.TextField()
     first_name=models.CharField(max_length=20,null=True)
     last_name=models.CharField(max_length=20,null=True)
@@ -108,7 +109,7 @@ class Likes(models.Model):
 class AddImageForm(ModelForm):
     class Meta:
         model = Image
-        fields = ['image','caption','author']
+        fields = ['image','caption','name']
 class UpdateProfileForm(ModelForm):
     class Meta:
         model = Profile

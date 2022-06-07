@@ -1,0 +1,41 @@
+
+
+{% load bootstrap3 %}
+{% block content %}
+<body  style="background-color: #f7f7f7; width: 100%;">
+    
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container" style="background-color: #f7f7f7; width: 100%;">
+    <div  class="row"  style="margin-top: 5vw;">
+       
+        <div class="col-md-4 "style="margin-top: 3vw;" >
+            <img src="../../../static/image/insta2 .png" alt="">
+        </div>
+        <div class="col-md-4" style="border-radius: 1vw; margin-left: 8vw;">
+            <!-- {% if form.errors %}
+            <p> Password or Username is incorrect </p>
+            {% endif %} -->
+            <div class="card mt-5"style="border-radius: 3vw;" >
+                <div class="header" style="background-color:white;margin-left: 3vw; margin-bottom: 1vw;margin-top: 2vw;">
+                   <h3> <img style="width: 4vw;" src="../../../static/image/ig-.png" alt=""> &ensp; Instagram</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/accounts/login/" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form%}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-dark" value="Login">
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}">
+                    </form>
+                    <p class="mt-5">Don't Have an Account, <a href="/accounts/register/" class="text-primary">Register</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- empty div -->
+        <div class="col-md-4"></div>
+    </div>
+</div>
+</body>
+{% endblock %}

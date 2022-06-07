@@ -1,4 +1,4 @@
-{% extends 'clone/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
    
@@ -11,8 +11,8 @@
             <div class="card">
                 <div class="card_header">
                     <div class="profile_image">
-                        <a href="/user/{{image.user.id}}">
-                            {% if image.user.profile.profile_photo%}
+                        <a href="/user/{{image.name.id}}">
+                            {% if image.name.profile.profile_photo%}
         
         
                             <img src="{{image.user.profile.profile_photo.url}}" class="rounded-circle border"
@@ -26,7 +26,7 @@
                     </div>
                     <div class="post_info">
                         <div class="post_name">
-                           <a href="">{{image.author}}</a> 
+                           <a href="profile/">{{image.name}}</a> 
                         </div>
                         <div class="post_location">
                            <p><i class="fa-solid fa-location-dot"></i> &ensp;Newyork</p> 
@@ -58,7 +58,7 @@
                      <p>{{image.like_count.count}} Likes</strong></p>
                 </div>
                 <div class="caption">
-                    <a href="">{{image.author}}</h2></a>
+                    <a href="profile/">{{image.name}}</h2></a>
                     <span><p>{{image.caption}}</p></span>
                 </div>
                 <div>
@@ -83,7 +83,7 @@
                     <img class="rounded-circle" src="{{ user.profile.profile_photo.url }}" width="45px" height="45px">
                 </div>
                 <div class="col-md-6 mr-2 mt-2">
-                    <span><a href="{% url 'user_profile' user.username  %}">{{user.username}}</a></span>
+                    <span><a href="{% url 'profile' user.username  %}">{{user.username}}</a></span>
                 </div>
                 <div class="col-md-4"></div>
                 {% endfor %}

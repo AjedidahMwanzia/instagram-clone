@@ -13,6 +13,7 @@ django-bootstrap3 = "*"
 django-urls = "*"
 six = "*"
 django-utils-six = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
