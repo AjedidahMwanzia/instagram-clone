@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 import datetime as dt
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm,AddImageForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm,AddImageForm,CommentForm
 from .models import Image,Profile, Follow, Comments, Likes
 from django.http  import HttpResponse,Http404
 from django.contrib import messages
@@ -30,7 +30,7 @@ def add_image(request):
     else:
             form=AddImageForm()
     return render(request,'add_image.html',{'form':form})
-def post_detail(request,image_id):
+def single_image(request,image_id):
     image=get_object_or_404(Image,id=image_id)
     comments=Comments.objects.filter(image=image).all()
     current_user=request.user
@@ -47,7 +47,8 @@ def post_detail(request,image_id):
     else:
         
         form = CommentForm()
-    return render(request, 'post_detail.html', {'image': image, 'form':form, 'comments':comments})
+    return render(request, 'image.html', {'image': image, 'form':form, 'comments':comments})
+    
 
 @login_required
 def search_results(request):

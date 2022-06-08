@@ -7,7 +7,7 @@ from django.urls import path
 urlpatterns=[
   path('search/', views.search_results, name='search_results'),
   path('', views.home, name='home'),
-  path('post_detail/',views.post_detail,name='post_detail'),
+  path('post/<image_id>',views.single_image,name='singleimage'),
   path('user/<user_id>', views.profile, name='profile'),
   path('user/add/image', views.add_image, name='addimage'),
   path('user/update/profile', views.update_profile, name='updateprofile'),
@@ -15,6 +15,6 @@ urlpatterns=[
   path('follow/<to_follow>', views.follow, name='follow'),
   path('profile/<username>/', views.user_profile, name='user_profile'),
   path('post/<image_id>/like',views.like_image,name='likeimage'),
-  path('profile/', views.user_profile, name='user_profile'),
+  
 
 ]

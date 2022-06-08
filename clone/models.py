@@ -102,37 +102,7 @@ class Likes(models.Model):
      # delete like from database
     def delete_likes(self):
         self.delete()
-    # class Meta:
-    #     constraints = [
-    #         models.UniqueConstraint(fields=['user', 'image'], name="unique_like"),
-    #     ]
-
-
-# class Comment(models.Model):
-#     comment = models.TextField()
-#     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
-#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-#     created = models.DateTimeField(auto_now_add=True, null=True)
-
-#     def save_comment(self):
-#         self.save()
-
-#     def delete_comment(self):
-#         self.delete()
-
-#     @classmethod
-#     def get_comments(cls,id):
-#         comments = cls.objects.filter(image__id=id)
-#         return comments
-
-#     def __str__(self):
-#         return self.comment
-
-
-
-
-
-
+   
 class Follow(models.Model):
     follower = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='following')
     followed = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='followers')

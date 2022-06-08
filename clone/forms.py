@@ -37,14 +37,13 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['profile_photo']
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = Comment
-#         exclude = ['image','name']
-
-    # class Meta:
-    #     model = Comment
-    #     fields = ('comment',)
+class CommentForm(ModelForm):
+    class Meta:
+        model=Comments
+        fields=['content']
+        widgets= {
+            'content':forms.Textarea(attrs={'rows':2,})
+        }
         
 class AddImageForm(ModelForm):
     class Meta:
