@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Field, ButtonHolder, Submit
+from django.forms import ModelForm, widgets
 
 class PostForm(forms.ModelForm):
     helper = FormHelper()
@@ -12,7 +13,7 @@ class PostForm(forms.ModelForm):
     ))
 
     class Meta:
-        model=Post
+        model=Image
         fields = [
             'image',
             'caption',
@@ -36,11 +37,21 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['profile_photo']
 
-class CommentForm(ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model=Comments
-        fields=['content']
-        widgets= {
-            'content':forms.Textarea(attrs={'rows':2,})
-        }
+        model = Comment
+        exclude = ['image','name']
+
+    class Meta:
+        model = Comment
+        fields = ('comment',)
+        
+class AddImageForm(ModelForm):
+    class Meta:
+        model = Image
+        fields = ['image','caption','name']
+class UpdateProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['bio','profile_photo']
 

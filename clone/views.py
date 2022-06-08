@@ -3,7 +3,8 @@ from django.http import HttpResponse, Http404
 import datetime as dt
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .models import Image,Profile,Likes,Comments
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .models import Image,Profile, Follow, Comments, Likes
 from django.http  import HttpResponse,Http404
 from django.contrib import messages
 
@@ -12,7 +13,7 @@ from django.contrib import messages
 @login_required
 def home(request):
     images=Image.objects.all()
-    
+    users = User.objects.exclude(id=request.user.id)
    
     return render(request,'index.html',{'images':images})
     
@@ -72,6 +73,7 @@ def profile(request,user_id):
     images = Image.objects.filter(name=current_user)
     profile = get_object_or_404(Profile,id = current_user.id)
     return render(request, 'profile/profile.html', {"images": images, "profile": profile})
+
 @login_required(login_url='/accounts/login/')
 def post_detail(request):
     if request.method=='POST':
@@ -87,19 +89,24 @@ def post_detail(request):
             form=AddImageForm()
     return render(request,'post_detail.html',{'form':form})
 def update_profile(request):
-  	#Get the profile
-    current_user=request.user
-    profile = Profile.objects.filter(id=current_user.id).first()
-    if request.method == 'POST':
-        profileform = UpdateProfileForm(request.POST,request.FILES,instance=profile)
-        if  profileform.is_valid:
-            profileform.save(commit=False)
-            profileform.user=request.user
-            profileform.save()
-            return redirect('profile.html')
+    if request.method == "POST":
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES,
+        instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Successfully updated your account!')
+            return redirect('profile')
     else:
-        form=UpdateProfileForm()
-    return render(request,'profile/update_profile.html',{'form':form})
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+    }
+    return render(request, 'profile/update_profile.html', context)
+
 def like_image(request, image_id):
     image = get_object_or_404(Image,id = image_id)
     like = Likes.objects.filter(image = image ,user = request.user).first()
@@ -111,3 +118,56 @@ def like_image(request, image_id):
     else:
         like.delete()
     return redirect('home')
+
+def user_profile(request, username):
+    user_prof = get_object_or_404(User, username=username)
+    if request.user == user_prof:
+        return redirect('profile', username=request.user.username)
+    user_images = user_prof.profile.images.all()
+    followers = Follow.objects.filter(followed=user_prof.profile)
+    follow_status = None
+    for follower in followers:
+        if request.user.profile == follower.follower:
+            follow_status = True
+        else:
+            follow_status = False
+    params = {
+        'user_prof': user_prof,
+        'user_images': user_images,
+        'followers': followers,
+        'follow_status': follow_status
+    }
+    print(followers)
+    return render(request, 'users/user_profile.html', params)
+
+def follow(request, to_follow):
+    if request.method == 'GET':
+        user_profile3 = Profile.objects.get(pk=to_follow)
+        follow_s = Follow(follower=request.user.profile, followed=user_profile3)
+        follow_s.save()
+        return redirect('profile', user_profile3.user.username)
+
+def unfollow(request, to_unfollow):
+    if request.method == 'GET':
+        user_profile2 = Profile.objects.get(pk=to_unfollow)
+        unfollow_d = Follow.objects.filter(follower=request.user.profile, followed=user_profile2)
+        unfollow_d.delete()
+        return redirect('profile', user_profile2.user.username)
+
+# @login_required 
+# def comment(request,image_id):
+#         current_user=request.user
+#         image = Image.objects.get(id=image_id)
+#         user_profile = User.objects.get(username=current_user.username)
+#         comments = Comment.objects.all()
+#         if request.method == 'POST':
+#                 form = CommentForm(request.POST, request.FILES)
+#                 if form.is_valid():
+#                         comment = form.save(commit=False)
+#                         comment.image = image
+#                         comment. = request.user
+#                         comment.save()  
+#                 return redirect('index')
+#         else:
+#                 form = CommentForm()
+#         return render(request, 'comment.html',locals())
