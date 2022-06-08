@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import Profile, Image, Comment
+from .models import Profile, Image, Comments
 
 class ProfileClassTest(TestCase):
     def setUp(self):
