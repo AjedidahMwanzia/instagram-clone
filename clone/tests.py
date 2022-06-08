@@ -4,7 +4,7 @@ from .models import Profile, Image, Comment
 
 class ProfileClassTest(TestCase):
     def setUp(self):
-        self.new_user = User(username='montez', email='montez@gmail.com', password='qwer')
+        self.new_user = User(username='jeddy', email='fajedidah@gmail.com', password='qwer')
         self.new_profile = Profile(profile_photo='', bio='ontriptic', user=self.new_user)
 
     def test_instance(self):
@@ -16,7 +16,7 @@ class ProfileClassTest(TestCase):
     
 class ImageClassTest(TestCase):
     def setUp(self):
-        self.new_user = User(username='montez', email='montez@gmail.com', password='qwer')
+        self.new_user = User(username='jeddy', email='fajedidah@gmail.com', password='qwer')
         self.new_image = Image( gallery_image='',image_name='one', image_caption='chasing sunsets be like', user=self.new_user)
 
     def test_instance(self):
@@ -28,8 +28,8 @@ class ImageClassTest(TestCase):
 
 class CommentsTest(TestCase):
     def setUp(self):
-        self.new_user = User(username='montez', email='montez@gmail.com', password='qwer')
-        self.new_image = Image(user='montez', image='', caption='ontriptic', profile=self.new_user)
+        self.new_user = User(username='jeddy', email='fajedidah@gmail.com', password='qwer')
+        self.new_image = Image(user='jeddy', image='', caption='ontriptic', profile=self.new_user)
         self.new_comment = Comment(comment='tembeaKenya',image=self.new_image,user=self.new_user)
 
     def test_instance(self):

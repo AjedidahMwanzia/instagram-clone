@@ -154,20 +154,4 @@ def unfollow(request, to_unfollow):
         unfollow_d.delete()
         return redirect('profile', user_profile2.user.username)
 
-# @login_required 
-# def comment(request,image_id):
-#         current_user=request.user
-#         image = Image.objects.get(id=image_id)
-#         user_profile = User.objects.get(username=current_user.username)
-#         comments = Comment.objects.all()
-#         if request.method == 'POST':
-#                 form = CommentForm(request.POST, request.FILES)
-#                 if form.is_valid():
-#                         comment = form.save(commit=False)
-#                         comment.image = image
-#                         comment. = request.user
-#                         comment.save()  
-#                 return redirect('index')
-#         else:
-#                 form = CommentForm()
-#         return render(request, 'comment.html',locals())
+

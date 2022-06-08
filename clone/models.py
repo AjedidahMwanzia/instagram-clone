@@ -108,25 +108,25 @@ class Likes(models.Model):
     #     ]
 
 
-class Comment(models.Model):
-    comment = models.TextField()
-    image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    created = models.DateTimeField(auto_now_add=True, null=True)
+# class Comment(models.Model):
+#     comment = models.TextField()
+#     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
+#     created = models.DateTimeField(auto_now_add=True, null=True)
 
-    def save_comment(self):
-        self.save()
+#     def save_comment(self):
+#         self.save()
 
-    def delete_comment(self):
-        self.delete()
+#     def delete_comment(self):
+#         self.delete()
 
-    @classmethod
-    def get_comments(cls,id):
-        comments = cls.objects.filter(image__id=id)
-        return comments
+#     @classmethod
+#     def get_comments(cls,id):
+#         comments = cls.objects.filter(image__id=id)
+#         return comments
 
-    def __str__(self):
-        return self.comment
+#     def __str__(self):
+#         return self.comment
 
 
 

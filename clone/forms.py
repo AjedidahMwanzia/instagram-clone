@@ -1,5 +1,5 @@
 from django import forms
-from .models import Profile, Image, Comment
+from .models import Profile, Image, Comments
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from crispy_forms.helper import FormHelper
@@ -37,14 +37,14 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         fields = ['profile_photo']
 
-class CommentForm(forms.ModelForm):
-    class Meta:
-        model = Comment
-        exclude = ['image','name']
+# class CommentForm(forms.ModelForm):
+#     class Meta:
+#         model = Comment
+#         exclude = ['image','name']
 
-    class Meta:
-        model = Comment
-        fields = ('comment',)
+    # class Meta:
+    #     model = Comment
+    #     fields = ('comment',)
         
 class AddImageForm(ModelForm):
     class Meta:
