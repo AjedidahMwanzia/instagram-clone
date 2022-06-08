@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 import datetime as dt
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm,AddImageForm
 from .models import Image,Profile, Follow, Comments, Likes
 from django.http  import HttpResponse,Http404
 from django.contrib import messages
@@ -17,25 +17,19 @@ def home(request):
    
     return render(request,'index.html',{'images':images})
     
-def post_create(request,image_id):
-    image=get_object_or_404(Image,id=image_id)
-    comments=Comments.objects.filter(image=image).all()
-    current_user=request.user
-    if request.method =='POST':
-        form = CommentForm(request.POST)
-        
+def add_image(request):
+    if request.method=='POST':
+        current_user=request.user
+        form=AddImageForm(request.POST,request.FILES)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = current_user
-            
-            comment.image = image
-            comment.save()
-        return redirect('home')
+            image=form.save(commit=False)
+            image.user=current_user
+            image.save()
+            messages.success(request,('Image was posted successfully!'))
+            return redirect('home')
     else:
-        
-        form = CommentForm()
-    return render(request, 'post_create.html', {'image': image, 'form':form, 'comments':comments})
-    
+            form=AddImageForm()
+    return render(request,'add_image.html',{'form':form})
 def post_detail(request,image_id):
     image=get_object_or_404(Image,id=image_id)
     comments=Comments.objects.filter(image=image).all()
